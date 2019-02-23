@@ -2,7 +2,7 @@
   <v-container>
     <v-layout text-xs-center wrap>
       <v-flex xs12>
-        <v-btn color="success" @click="testAction(10)">Show Next Busses</v-btn>
+        <v-btn color="success" @click="changeStyle" :style="styleButton">Show Next Busses</v-btn>
       </v-flex>
     </v-layout>
   </v-container>
@@ -14,13 +14,22 @@ import { mapGetters } from "vuex";
 
 export default {
   data: () => ({
-    ecosystem: "eco"
+    styleButton: {
+      transition: "all 0.75s ease 0s",
+      "margin-top": "20%"
+    }
   }),
   methods: {
-    ...mapActions(["testAction"])
+    changeStyle() {
+      console.log("hi");
+      this.styleButton["margin-top"] = "0.5em";
+      this.$store.commit("changeListStyle");
+      this.pressButton();
+    },
+    ...mapActions(["pressButton"])
   },
   computed: {
-    ...mapGetters(["testGetter"])
+    ...mapGetters(["buttonPressed"])
   }
 };
 </script>

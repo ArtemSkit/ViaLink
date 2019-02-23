@@ -11,16 +11,8 @@
 </template>
 
 <script>
-import BusList from "./components/BusList"
-import GPSButton from "./components/GPSButton";
-
-
 export default {
   name: "App",
-  components: {
-    BusList,
-    GPSButton
-  },
   data() {
     return {
       //

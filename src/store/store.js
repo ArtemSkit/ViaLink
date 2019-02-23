@@ -6,24 +6,37 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   strict: true,
   state: {
-    test: 'Hello'
+    buttonIsPressed: false,
+    styleList: {
+      transition: 'all 2s ease 0s',
+      height: '10em',
+      'text-align': 'center',
+      opacity: '0'
+    }
   },
+
   getters: {
-    testGetter: (state) => {
-      return state.test
+    buttonPressed: (state) => {
+      return state.buttonIsPressed
+    },
+    styleList: (state) => {
+      return state.styleList
     }
   },
   mutations: {
-    testMutation: (state, payload) => {
-      state.test = state.test + ' ' + payload
-      alert(state.test)
+    pressButton: (state, payload) => {
+      state.buttonIsPressed = true
+    },
+    changeListStyle: state => {
+      setTimeout(() => {
+        state.styleList.height = '4em'
+        state.styleList.opacity = '1'
+      }, 30);
     }
   },
   actions: {
-    testAction: (context, payload) => {
-      setTimeout(function () { // reach out for data
-        context.commit('testMutation', payload);
-      }, 2000);
+    pressButton: (context, payload) => {
+      context.commit('pressButton', payload);
     }
   }
 });
