@@ -1,13 +1,13 @@
 <template>
-  <HelloWorld />
+  <GPSButton/>
 </template>
 
 <script>
-  import HelloWorld from '../components/HelloWorld'
+import GPSButton from "../components/GPSButton";
 
-  export default {
-    components: {
-      HelloWorld
-    }
+export default {
+  components: {
+    GPSButton
   }
+};
 </script>
