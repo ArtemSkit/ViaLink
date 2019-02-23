@@ -16,6 +16,9 @@ export const store = new Vuex.Store({
   },
 
   getters: {
+    checkGPSService: (state) => {
+      return !!navigator.geolocation
+    },
     buttonPressed: (state) => {
       return state.buttonIsPressed
     },
@@ -28,10 +31,8 @@ export const store = new Vuex.Store({
       state.buttonIsPressed = true
     },
     changeListStyle: state => {
-      setTimeout(() => {
-        state.styleList.height = '4em'
-        state.styleList.opacity = '1'
-      }, 30);
+      state.styleList.height = '4em'
+      state.styleList.opacity = '1'
     }
   },
   actions: {

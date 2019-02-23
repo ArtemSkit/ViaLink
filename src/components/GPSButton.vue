@@ -2,7 +2,12 @@
   <v-container>
     <v-layout text-xs-center wrap>
       <v-flex xs12>
-        <v-btn color="success" @click="changeStyle" :style="styleButton">Show Next Busses</v-btn>
+        <v-btn
+          color="success"
+          :disabled="!checkGPSService"
+          @click="changeStyle"
+          :style="styleButton"
+        >Show Next Busses</v-btn>
       </v-flex>
     </v-layout>
   </v-container>
@@ -20,16 +25,30 @@ export default {
     }
   }),
   methods: {
+    getLocation() {
+      navigator.geolocation.getCurrentPosition(this.showPosition);
+    },
+    showPosition(position) {
+      console.log(
+        "Latitude: " +
+          position.coords.latitude +
+          "    Longitude: " +
+          position.coords.longitude
+      );
+    },
     changeStyle() {
-      console.log("hi");
       this.styleButton["margin-top"] = "0.5em";
+      setTimeout(() => {
+        this.$store.commit("changeListStyle");
+      }, 30);
       this.$store.commit("changeListStyle");
+      this.getLocation();
       this.pressButton();
     },
     ...mapActions(["pressButton"])
   },
   computed: {
-    ...mapGetters(["buttonPressed"])
+    ...mapGetters(["buttonPressed", "checkGPSService"])
   }
 };
 </script>
