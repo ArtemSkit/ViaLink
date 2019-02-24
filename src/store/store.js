@@ -14,6 +14,13 @@ export const store = new Vuex.Store({
       opacity: '0',
       cursor: 'pointer'
     },
+    styleArrivalList: {
+      transition: 'all .8s ease 0s',
+      height: '10em',
+      'text-align': 'center',
+      opacity: '0',
+      cursor: 'pointer'
+    },
     styleButton: {
       transition: 'all 0.5s ease 0s',
       'margin-top': '20%'
@@ -34,6 +41,9 @@ export const store = new Vuex.Store({
     },
     styleList: (state) => {
       return state.styleList
+    },
+    styleArrivalList: (state) => {
+      return state.styleArrivalList
     },
     styleButton: (state) => {
       return state.styleButton
@@ -66,9 +76,15 @@ export const store = new Vuex.Store({
       state.styleList.height = '4em'
       state.styleList.opacity = '1'
     },
+    changeArrvalListStyle: state => {
+      state.styleArrivalList.height = '4em'
+      state.styleArrivalList.opacity = '1'
+    },
     resetListStyle: state => {
       state.styleList.height = '10em'
       state.styleList.opacity = '0'
+      state.styleArrivalList.height = '10em'
+      state.styleArrivalList.opacity = '0'
     },
     changeButtonStyle: state => {
       state.styleButton['margin-top'] = '0.5em'
@@ -85,6 +101,10 @@ export const store = new Vuex.Store({
   actions: {
     pressList: (context, payload) => {
       context.commit('pressList', payload);
+      context.commit('resetListStyle', payload);
+      setTimeout(() => {
+        context.commit('changeArrvalListStyle');
+      }, 30)
     },
     pressButton: (context, payload) => {
       context.commit('pressButton', payload);
