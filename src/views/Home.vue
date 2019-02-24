@@ -12,15 +12,17 @@
     <h1 v-if="!checkGPSService">Geolocation is not supported by this browser.</h1>
     <GPSButton/>
     <BusList
-      v-if="checkGPSService && !errorRetrievingGPS && promptResolved"
+      v-if="checkGPSService && !errorRetrievingGPS && promptResolved && !listIsPressed"
       v-show="buttonPressed"
     />
+    <ArrivalList v-if="listIsPressed"/>
   </div>
 </template>
 
 
 
 <script>
+import ArrivalList from "../components/ArrivalList";
 import GPSButton from "../components/GPSButton";
 import BusList from "../components/BusList";
 import { mapGetters } from "vuex";
@@ -32,7 +34,8 @@ export default {
   }),
   components: {
     GPSButton,
-    BusList
+    BusList,
+    ArrivalList
   },
   methods: {},
   computed: {
@@ -40,7 +43,8 @@ export default {
       "buttonPressed",
       "checkGPSService",
       "errorRetrievingGPS",
-      "promptResolved"
+      "promptResolved",
+      "listIsPressed"
     ])
   }
 };

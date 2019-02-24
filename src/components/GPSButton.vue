@@ -49,6 +49,7 @@ export default {
         if (this.checkGPSService && !this.errorRetrievingGPS) {
           this.$store.commit("changeListStyle");
           this.$store.commit("changeButtonStyle");
+          this.$store.commit("changeArrvalListStyle");
         }
         clearInterval(interval);
         console.log("Resolved");
