@@ -28,12 +28,9 @@ import { store } from "../store/store.js";
 export default {
   data: () => ({
     items: [
-      { busNumber: 443, busName: "Loot and skip", busTime: "12:30" },
-      { busNumber: 449, busName: "Loot and skip", busTime: "12:30" },
-      { busNumber: 444, busName: "Loot and skip", busTime: "12:30" },
-      { busNumber: 444, busName: "Loot and skip", busTime: "12:30" },
-      { busNumber: 44544, busName: "Loot and skip", busTime: "12:30" },
-      { busNumber: 443423, busName: "Loot and skip", busTime: "12:30" }
+      { busNumber: 444, busName: "Bus Name", busTime: "12:30" },
+      { busNumber: 443, busName: "Bus Name", busTime: "12:40" },
+      { busNumber: 449, busName: "Bus Name", busTime: "12:10" }
     ]
   }),
   computed: {

@@ -31,50 +31,20 @@ export default {
     items: [
       {
         busNumber: 444,
-        busName: "Hellooooo",
+        busName: "Bus name",
         busTime: "12:30",
-        estimatedWait: "(Add variable) min(s)"
-      },
-      {
-        busNumber: 560,
-        busName: "Howdy",
-        busTime: "14:30",
-        estimatedWait: "(Add variable) min(s)"
-      },
-      {
-        busNumber: 780,
-        busName: "Woody",
-        busTime: "15:45",
-        estimatedWait: "(Add variable) min(s)"
-      },
-      {
-        busNumber: 660,
-        busName: "Jar Jar Binx",
-        busTime: "09:45",
         estimatedWait: "(Add variable) min(s)"
       },
       {
         busNumber: 444,
-        busName: "Hellooooo",
-        busTime: "12:30",
-        estimatedWait: "(Add variable) min(s)"
-      },
-      {
-        busNumber: 560,
-        busName: "Howdy",
+        busName: "Bus name",
         busTime: "14:30",
         estimatedWait: "(Add variable) min(s)"
       },
       {
-        busNumber: 780,
-        busName: "Woody",
+        busNumber: 444,
+        busName: "Bus name",
         busTime: "15:45",
-        estimatedWait: "(Add variable) min(s)"
-      },
-      {
-        busNumber: 660,
-        busName: "Jar Jar Binx",
-        busTime: "09:45",
         estimatedWait: "(Add variable) min(s)"
       }
     ]
