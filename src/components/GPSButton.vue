@@ -42,6 +42,13 @@ export default {
           "    Longitude: " +
           position.coords.longitude
       );
+      var marker = {
+        position: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        }
+      };
+      this.setLocation(marker);
     },
     changeStyle() {
       var interval = setInterval(() => {
@@ -57,7 +64,7 @@ export default {
       this.getLocation();
       this.pressButton();
     },
-    ...mapActions(["pressButton", "error", "noError"])
+    ...mapActions(["pressButton", "error", "noError", "setLocation"])
   },
   computed: {
     ...mapGetters([

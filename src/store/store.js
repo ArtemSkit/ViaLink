@@ -29,7 +29,17 @@ export const store = new Vuex.Store({
     errorMessage: '',
     promptResolved: false,
     listIsPressed: false,
-    busSelected: null
+    busSelected: null,
+    tooFar: true,
+    markers: [{
+      position: {
+        coords: {
+          latitude: 1,
+          longitude: 1
+        }
+      }
+    }],
+    loc: {}
   },
 
   getters: {
@@ -42,8 +52,14 @@ export const store = new Vuex.Store({
     styleList: (state) => {
       return state.styleList
     },
+    tooFar: (state) => {
+      return state.tooFar
+    },
     styleArrivalList: (state) => {
       return state.styleArrivalList
+    },
+    markers: (state) => {
+      return state.markers
     },
     styleButton: (state) => {
       return state.styleButton
@@ -56,6 +72,9 @@ export const store = new Vuex.Store({
     },
     listIsPressed: (state) => {
       return state.listIsPressed
+    },
+    getLocation: (state) => {
+      return state.loc
     }
   },
   mutations: {
@@ -96,9 +115,15 @@ export const store = new Vuex.Store({
     },
     resetListIsPressed: (state, payload) => {
       state.listIsPressed = false
+    },
+    setLocation: (context, payload) => {
+      context.loc = payload
     }
   },
   actions: {
+    setLocation: (context, payload) => {
+      context.commit('setLocation', payload);
+    },
     pressList: (context, payload) => {
       context.commit('pressList', payload);
       context.commit('resetListStyle', payload);
