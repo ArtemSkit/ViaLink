@@ -7,7 +7,7 @@
           :disabled="!checkGPSService"
           @click="changeStyle"
           :style="styleButton"
-        >Show Next Busses</v-btn>
+        >Show Next Buses</v-btn>
       </v-flex>
     </v-layout>
   </v-container>
