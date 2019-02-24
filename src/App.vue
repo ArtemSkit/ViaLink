@@ -17,11 +17,7 @@
     </v-toolbar>
     <div
       style="position:fixed; bottom: 0.5em; left: 0.5em; color: gray; margin: 0;font-family: Roboto; overflow: hidden; z-index: 10000; user-select: none;"
-<<<<<<< HEAD
-    >v0.3.1</div>
-=======
-    >v0.2.1</div>
->>>>>>> 11b985e1bf0f10b4c9f24e60e60353099d61421b
+    >v0.2.2</div>
     <v-content>
       <router-view></router-view>
     </v-content>
