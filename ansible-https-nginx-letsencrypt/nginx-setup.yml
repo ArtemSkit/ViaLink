@@ -1,0 +1,92 @@
+---
+# Run with ansible-playbook <filename> -u root
+# 	(make sure to add the IPs of machines you want to manage to /etc/ansible/hosts first)
+
+- hosts: webservers
+  remote_user: vagrant
+  become: yes
+  become_user: root
+  become_method: sudo
+
+  vars:
+    # used for filepaths
+    site_name: "myproject"
+    # used in the website's markup
+    site_title: "My Project Site"
+    # used in the web server configuration file
+    site_url: "myproject.com"
+    # My email
+    letsencrypt_email: "myproject@gmail.com"
+
+  tasks:
+    - name: Install nginx
+      package: name=nginx state=latest
+
+    - name: Create website directory
+      file: path="/var/www/{{ site_name }}" state=directory mode=0755
+
+    - name: Delete default nginx files
+      file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+      - /etc/nginx/sites-available/default
+      - /etc/nginx/sites-enabled/default
+
+    - name: Create main nginx config file
+      template:
+        src: "nginx/nginx.conf"
+        dest: "/etc/nginx/nginx.conf"
+      notify:
+      - restart nginx
+
+    - name: Create nginx vhost config file
+      template:
+        src: "nginx/myproject.conf"
+        dest: "/etc/nginx/sites-available/{{ site_name }}.conf"
+      notify:
+      - restart nginx
+
+    - name: Create symlinks
+      file: src=/etc/nginx/sites-available/{{ site_name }}.conf dest=/etc/nginx/sites-enabled/{{ site_name }}.conf state=link
+      notify:
+      - restart nginx
+
+    - name: Create website
+      template:
+        src: "html/index.html"
+        dest: /var/www/{{ site_name }}/index.html
+
+    - name: Remove default nginx vhost configuration
+      file: path=/etc/nginx/sites-enabled/default state=absent
+      notify:
+      - restart nginx
+
+    - name: Install LetsEncrypt
+      package: name=letsencrypt state=latest
+
+    - name: Create LetsEncrypt Certificate
+      shell: letsencrypt certonly -n --webroot -w /var/www/{{ site_name }} -m {{ letsencrypt_email }} --agree-to -d {{ site_url }}
+      args:
+        creates: /etc/letsencrypt/live/{{ site_url }}
+      notify:
+      - restart nginx
+
+    - name: Update nginx file to HTTPS
+      template:
+        src: "nginx/updatedproject.conf"
+        dest: "/etc/nginx/sites-available/{{ site_name }}.conf"
+      notify:
+      - restart nginx
+
+    - name: Add LetsEncrypt cronjob for Cert Renewal
+      cron:
+        name: letsencrypt_renewal
+        special_time: weekly
+        job: letsencrypt --renew certonly -n --webroot -w /var/www/{{ site_name }} -m {{ letsencrypt_email }} --agree-to -d {{ site_url }} && systemctl reload nginx
+
+  handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
