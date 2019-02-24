@@ -3,7 +3,7 @@
     <v-list class="buslist">
       <template v-for="(item, i) in items">
         <!-- If you click on battle, it navigates to the specific battle -DV -->
-        <v-list-tile v-ripple :style="styleList" :key="i">
+        <v-list-tile v-ripple :style="styleList" :key="i" @click="pressList(item.busNumber)">
           <v-list-tile-content>
             <v-list-tile-title>
               <div class="opposite-sides-string-wrapper">
@@ -21,6 +21,7 @@
 </template> 
 
 <script>
+import { mapActions } from "vuex";
 import { mapGetters } from "vuex";
 import { store } from "../store/store.js";
 
@@ -37,11 +38,10 @@ export default {
   }),
   computed: {
     ...mapGetters(["buttonPressed", "styleList"])
+  },
+  methods: {
+    ...mapActions(["pressList"])
   }
-
-  // methods: {
-  //     ...mapActions("")
-  // }
 };
 </script>
 

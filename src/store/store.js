@@ -20,7 +20,9 @@ export const store = new Vuex.Store({
     },
     error: false,
     errorMessage: '',
-    promptResolved: false
+    promptResolved: false,
+    listIsPressed: false,
+    busSelected: null
   },
 
   getters: {
@@ -41,9 +43,13 @@ export const store = new Vuex.Store({
     },
     promptResolved: (state) => {
       return state.promptResolved
+    },
+    listIsPressed: (state) => {
+      return state.listIsPressed
     }
   },
   mutations: {
+
     noError: (state) => {
       state.error = false
       state.promptResolved = true
@@ -51,9 +57,18 @@ export const store = new Vuex.Store({
     pressButton: (state, payload) => {
       state.buttonIsPressed = true
     },
+    pressList: (state, payload) => {
+      console.log(payload)
+      state.listIsPressed = true
+      state.busSelecteed = payload
+    },
     changeListStyle: state => {
       state.styleList.height = '4em'
       state.styleList.opacity = '1'
+    },
+    resetListStyle: state => {
+      state.styleList.height = '10em'
+      state.styleList.opacity = '0'
     },
     changeButtonStyle: state => {
       state.styleButton['margin-top'] = '0.5em'
@@ -62,11 +77,19 @@ export const store = new Vuex.Store({
       state.error = true
       state.errorMessage = err
       state.promptResolved = true
+    },
+    resetListIsPressed: (state, payload) => {
+      state.listIsPressed = false
     }
   },
   actions: {
+    pressList: (context, payload) => {
+      context.commit('pressList', payload);
+    },
     pressButton: (context, payload) => {
       context.commit('pressButton', payload);
+      context.commit('resetListIsPressed', payload);
+      context.commit('resetListStyle', payload);
     },
     error: (context, payload) => {
       context.commit('error', payload);
