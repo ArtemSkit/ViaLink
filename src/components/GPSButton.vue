@@ -19,15 +19,21 @@ import { mapGetters } from "vuex";
 
 export default {
   data: () => ({
-    styleButton: {
-      transition: "all 0.75s ease 0s",
-      "margin-top": "20%"
+    options: {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
     }
   }),
   methods: {
     getLocation() {
-      navigator.geolocation.getCurrentPosition(this.showPosition);
+      navigator.geolocation.getCurrentPosition(
+        this.showPosition,
+        this.error,
+        this.options
+      );
     },
+
     showPosition(position) {
       console.log(
         "Latitude: " +
@@ -37,18 +43,17 @@ export default {
       );
     },
     changeStyle() {
-      this.styleButton["margin-top"] = "0.5em";
       setTimeout(() => {
         this.$store.commit("changeListStyle");
+        this.$store.commit("changeButtonStyle");
       }, 30);
-      this.$store.commit("changeListStyle");
       this.getLocation();
       this.pressButton();
     },
-    ...mapActions(["pressButton"])
+    ...mapActions(["pressButton", "error"])
   },
   computed: {
-    ...mapGetters(["buttonPressed", "checkGPSService"])
+    ...mapGetters(["buttonPressed", "checkGPSService", "styleButton"])
   }
 };
 </script>

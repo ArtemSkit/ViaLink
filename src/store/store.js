@@ -8,11 +8,18 @@ export const store = new Vuex.Store({
   state: {
     buttonIsPressed: false,
     styleList: {
-      transition: 'all 2s ease 0s',
+      transition: 'all .8s ease 0s',
       height: '10em',
       'text-align': 'center',
-      opacity: '0'
-    }
+      opacity: '0',
+      cursor: 'pointer'
+    },
+    styleButton: {
+      transition: 'all 0.5s ease 0s',
+      'margin-top': '20%'
+    },
+    error: false,
+    errorMessage: ''
   },
 
   getters: {
@@ -24,6 +31,12 @@ export const store = new Vuex.Store({
     },
     styleList: (state) => {
       return state.styleList
+    },
+    styleButton: (state) => {
+      return state.styleButton
+    },
+    errorRetrievingGPS: (state) => {
+      return state.error
     }
   },
   mutations: {
@@ -33,11 +46,21 @@ export const store = new Vuex.Store({
     changeListStyle: state => {
       state.styleList.height = '4em'
       state.styleList.opacity = '1'
+    },
+    changeButtonStyle: state => {
+      state.styleButton['margin-top'] = '0.5em'
+    },
+    error: (state, err) => {
+      state.error = true
+      state.errorMessage = err
     }
   },
   actions: {
     pressButton: (context, payload) => {
       context.commit('pressButton', payload);
+    },
+    error: (context, payload) => {
+      context.commit('error', payload);
     }
   }
 });
