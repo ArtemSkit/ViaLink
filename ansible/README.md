@@ -63,6 +63,10 @@ end
 
 Now just explore to the site and it should have your hello world encrypted via HTTPS!
 
+### Note for Production
+- After running this build, run [scripts/rebuild_vue_project.sh](https://github.com/ArtemSkit/ViaLink/blob/master/scripts/rebuild_vue_project.sh) on the target webserver. This will overwrite the hello world html file with our own project.
+   - The repo needs to be already cloned and in the /srv/gocodesa directory
+
 ## References
 
 - Support David Cohen, author of Ansible 2 for Beginners: https://www.udemy.com/ansible-2-for-beginners/
