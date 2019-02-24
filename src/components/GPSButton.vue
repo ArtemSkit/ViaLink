@@ -35,6 +35,7 @@ export default {
     },
 
     showPosition(position) {
+      this.noError();
       console.log(
         "Latitude: " +
           position.coords.latitude +
@@ -43,17 +44,28 @@ export default {
       );
     },
     changeStyle() {
-      setTimeout(() => {
-        this.$store.commit("changeListStyle");
-        this.$store.commit("changeButtonStyle");
+      var interval = setInterval(() => {
+        if (!this.promptResolved) return;
+        if (this.checkGPSService && !this.errorRetrievingGPS) {
+          this.$store.commit("changeListStyle");
+          this.$store.commit("changeButtonStyle");
+        }
+        clearInterval(interval);
+        console.log("Resolved");
       }, 30);
       this.getLocation();
       this.pressButton();
     },
-    ...mapActions(["pressButton", "error"])
+    ...mapActions(["pressButton", "error", "noError"])
   },
   computed: {
-    ...mapGetters(["buttonPressed", "checkGPSService", "styleButton"])
+    ...mapGetters([
+      "errorRetrievingGPS",
+      "buttonPressed",
+      "checkGPSService",
+      "styleButton",
+      "promptResolved"
+    ])
   }
 };
 </script>

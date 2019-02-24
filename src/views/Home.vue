@@ -11,7 +11,10 @@
     </v-alert>
     <h1 v-if="!checkGPSService">Geolocation is not supported by this browser.</h1>
     <GPSButton/>
-    <BusList v-if="checkGPSService" v-show="buttonPressed"/>
+    <BusList
+      v-if="checkGPSService && !errorRetrievingGPS && promptResolved"
+      v-show="buttonPressed"
+    />
   </div>
 </template>
 
@@ -33,7 +36,12 @@ export default {
   },
   methods: {},
   computed: {
-    ...mapGetters(["buttonPressed", "checkGPSService", "errorRetrievingGPS"])
+    ...mapGetters([
+      "buttonPressed",
+      "checkGPSService",
+      "errorRetrievingGPS",
+      "promptResolved"
+    ])
   }
 };
 </script>

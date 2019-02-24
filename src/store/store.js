@@ -19,7 +19,8 @@ export const store = new Vuex.Store({
       'margin-top': '20%'
     },
     error: false,
-    errorMessage: ''
+    errorMessage: '',
+    promptResolved: false
   },
 
   getters: {
@@ -37,9 +38,16 @@ export const store = new Vuex.Store({
     },
     errorRetrievingGPS: (state) => {
       return state.error
+    },
+    promptResolved: (state) => {
+      return state.promptResolved
     }
   },
   mutations: {
+    noError: (state) => {
+      state.error = false
+      state.promptResolved = true
+    },
     pressButton: (state, payload) => {
       state.buttonIsPressed = true
     },
@@ -53,6 +61,7 @@ export const store = new Vuex.Store({
     error: (state, err) => {
       state.error = true
       state.errorMessage = err
+      state.promptResolved = true
     }
   },
   actions: {
@@ -61,6 +70,9 @@ export const store = new Vuex.Store({
     },
     error: (context, payload) => {
       context.commit('error', payload);
+    },
+    noError: (context, payload) => {
+      context.commit('noError', payload);
     }
   }
 });
