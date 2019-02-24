@@ -15,7 +15,9 @@
         <div style="margin-top: .5em; font-size: 1.5em;">About</div>
       </router-link>
     </v-toolbar>
-
+    <div
+      style="position:fixed; bottom: 0.5em; left: 0.5em; color: gray; margin: 0;font-family: Roboto; overflow: hidden; z-index: 10000; user-select: none;"
+    >v0.1.1</div>
     <v-content>
       <router-view></router-view>
     </v-content>
