@@ -78,7 +78,9 @@ export const store = new Vuex.Store({
     }
   },
   mutations: {
-
+    toggleTooFar: (state, payload) => {
+      state.tooFar = !state.tooFar
+    },
     noError: (state) => {
       state.error = false
       state.promptResolved = true
@@ -141,6 +143,9 @@ export const store = new Vuex.Store({
     },
     noError: (context, payload) => {
       context.commit('noError', payload);
+    },
+    toggleTooFar: (context, payload) => {
+      context.commit('toggleTooFar');
     }
   }
 });

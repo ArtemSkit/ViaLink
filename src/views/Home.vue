@@ -33,6 +33,10 @@
         />
       </GmapMap>
     </div>
+    <v-btn
+      @click="toggleTooFar"
+      style="position:fixed; bottom: 0.5em; right: 0.5em; color: gray; margin: 0;font-family: Roboto; overflow: hidden; z-index: 10000; user-select: none;"
+    >At home</v-btn>
   </div>
 </template>
 
@@ -45,6 +49,7 @@ import BusList from "../components/BusList";
 import { mapGetters } from "vuex";
 import { store } from "../store/store.js";
 import { gmapApi } from "vue2-google-maps";
+import { mapActions } from "vuex";
 
 export default {
   data: () => ({
@@ -55,7 +60,9 @@ export default {
     BusList,
     ArrivalList
   },
-  methods: {},
+  methods: {
+    ...mapActions(["toggleTooFar"])
+  },
   computed: {
     google: gmapApi,
     ...mapGetters([
