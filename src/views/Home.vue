@@ -34,9 +34,15 @@
       </GmapMap>
     </div>
     <v-btn
+      v-if="tooFar"
       @click="toggleTooFar"
       style="position:fixed; bottom: 0.5em; right: 0.5em; color: gray; margin: 0;font-family: Roboto; overflow: hidden; z-index: 10000; user-select: none;"
     >At home</v-btn>
+    <v-btn
+      v-else
+      @click="toggleTooFar"
+      style="position:fixed; bottom: 0.5em; right: 0.5em; color: gray; margin: 0;font-family: Roboto; overflow: hidden; z-index: 10000; user-select: none;"
+    >At a buss stop</v-btn>
   </div>
 </template>
 
