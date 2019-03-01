@@ -1,7 +1,7 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import Vue from 'vue'
+import Vuex from 'vuex'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   strict: true,
@@ -66,13 +66,13 @@ export const store = new Vuex.Store({
   },
   actions: {
     pressButton: (context, payload) => {
-      context.commit('pressButton', payload);
+      context.commit('pressButton', payload)
     },
     error: (context, payload) => {
-      context.commit('error', payload);
+      context.commit('error', payload)
     },
     noError: (context, payload) => {
-      context.commit('noError', payload);
+      context.commit('noError', payload)
     }
   }
-});
+})

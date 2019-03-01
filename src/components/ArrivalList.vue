@@ -27,65 +27,65 @@
               </template>
         </v-list>
   </div>
-</template> 
+</template>
 
 <script>
-import { mapActions } from "vuex";
-import { mapGuests } from "vuex";
+import { mapActions } from 'vuex'
+import { mapGuests } from 'vuex'
 export default {
-    data:() => ({
-        items: [
-            {
-                busNumber: 444,
-                busName: 'Hellooooo',
-                busTime: '12:30',
-                estimatedWait: '(Add variable) min(s)'
-            },
-            {
-                busNumber: 560,
-                busName: 'Howdy',
-                busTime: '14:30',
-                estimatedWait: '(Add variable) min(s)'
-            },
-            {
-                busNumber: 780,
-                busName: 'Woody',
-                busTime: '15:45',
-                estimatedWait: '(Add variable) min(s)'
-            },
-            { 
-                busNumber: 660,
-                busName: 'Jar Jar Binx',
-                busTime: '09:45',
-                estimatedWait: '(Add variable) min(s)'
-            },
-            {
-                busNumber: 444,
-                busName: 'Hellooooo',
-                busTime: '12:30',
-                estimatedWait: '(Add variable) min(s)'
-            },
-            {
-                busNumber: 560,
-                busName: 'Howdy',
-                busTime: '14:30',
-                estimatedWait: '(Add variable) min(s)'
-            },
-            {
-                busNumber: 780,
-                busName: 'Woody',
-                busTime: '15:45',
-                estimatedWait: '(Add variable) min(s)'
-            },
-            { 
-                busNumber: 660,
-                busName: 'Jar Jar Binx',
-                busTime: '09:45',
-                estimatedWait: '(Add variable) min(s)'
-            }
+  data: () => ({
+    items: [
+      {
+        busNumber: 444,
+        busName: 'Hellooooo',
+        busTime: '12:30',
+        estimatedWait: '(Add variable) min(s)'
+      },
+      {
+        busNumber: 560,
+        busName: 'Howdy',
+        busTime: '14:30',
+        estimatedWait: '(Add variable) min(s)'
+      },
+      {
+        busNumber: 780,
+        busName: 'Woody',
+        busTime: '15:45',
+        estimatedWait: '(Add variable) min(s)'
+      },
+      {
+        busNumber: 660,
+        busName: 'Jar Jar Binx',
+        busTime: '09:45',
+        estimatedWait: '(Add variable) min(s)'
+      },
+      {
+        busNumber: 444,
+        busName: 'Hellooooo',
+        busTime: '12:30',
+        estimatedWait: '(Add variable) min(s)'
+      },
+      {
+        busNumber: 560,
+        busName: 'Howdy',
+        busTime: '14:30',
+        estimatedWait: '(Add variable) min(s)'
+      },
+      {
+        busNumber: 780,
+        busName: 'Woody',
+        busTime: '15:45',
+        estimatedWait: '(Add variable) min(s)'
+      },
+      {
+        busNumber: 660,
+        busName: 'Jar Jar Binx',
+        busTime: '09:45',
+        estimatedWait: '(Add variable) min(s)'
+      }
 
-        ]
-    })
+    ]
+  })
 }
 </script>
 
@@ -97,7 +97,7 @@ display: grid;
 .opposite-sides-string-wrapper div {
     width: 25%;
     display: inline-block;
-    
+
   }
   .opposite-sides-string-wrapper .opposite-sides-right {
     width: 3em;

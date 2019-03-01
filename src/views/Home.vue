@@ -18,13 +18,12 @@
   </div>
 </template>
 
-
-
 <script>
 import GPSButton from "../components/GPSButton";
 import BusList from "../components/BusList";
 import { mapGetters } from "vuex";
 import { store } from "../store/store.js";
+import axios from "axios";
 
 export default {
   data: () => ({

@@ -18,31 +18,31 @@
       </template>
     </v-list>
   </div>
-</template> 
+</template>
 
 <script>
-import { mapGetters } from "vuex";
-import { store } from "../store/store.js";
+import { mapGetters } from 'vuex'
+import { store } from '../store/store.js'
 
 export default {
   data: () => ({
     items: [
-      { busNumber: 443, busName: "Loot and skip", busTime: "12:30" },
-      { busNumber: 449, busName: "Loot and skip", busTime: "12:30" },
-      { busNumber: 444, busName: "Loot and skip", busTime: "12:30" },
-      { busNumber: 444, busName: "Loot and skip", busTime: "12:30" },
-      { busNumber: 44544, busName: "Loot and skip", busTime: "12:30" },
-      { busNumber: 443423, busName: "Loot and skip", busTime: "12:30" }
+      { busNumber: 443, busName: 'Loot and skip', busTime: '12:30' },
+      { busNumber: 449, busName: 'Loot and skip', busTime: '12:30' },
+      { busNumber: 444, busName: 'Loot and skip', busTime: '12:30' },
+      { busNumber: 444, busName: 'Loot and skip', busTime: '12:30' },
+      { busNumber: 44544, busName: 'Loot and skip', busTime: '12:30' },
+      { busNumber: 443423, busName: 'Loot and skip', busTime: '12:30' }
     ]
   }),
   computed: {
-    ...mapGetters(["buttonPressed", "styleList"])
+    ...mapGetters(['buttonPressed', 'styleList'])
   }
 
   // methods: {
   //     ...mapActions("")
   // }
-};
+}
 </script>
 
 <style>

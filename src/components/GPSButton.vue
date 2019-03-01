@@ -14,8 +14,9 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import { mapGetters } from "vuex";
+import { mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
+import { request } from 'request'
 
 export default {
   data: () => ({
@@ -26,48 +27,49 @@ export default {
     }
   }),
   methods: {
-    getLocation() {
+    getLocation () {
       navigator.geolocation.getCurrentPosition(
         this.showPosition,
         this.error,
         this.options
-      );
+      )
     },
 
-    showPosition(position) {
-      this.noError();
+    showPosition (position) {
+      this.noError()
       console.log(
-        "Latitude: " +
+        'Latitude: \t' +
           position.coords.latitude +
-          "    Longitude: " +
-          position.coords.longitude
-      );
+          '\nLongitude: \t' +
+          position.coords.longitude +
+          '\nIP Address: \t'
+      )
     },
-    changeStyle() {
+    changeStyle () {
       var interval = setInterval(() => {
-        if (!this.promptResolved) return;
+        if (!this.promptResolved) return
         if (this.checkGPSService && !this.errorRetrievingGPS) {
-          this.$store.commit("changeListStyle");
-          this.$store.commit("changeButtonStyle");
+          this.$store.commit('changeListStyle')
+          this.$store.commit('changeButtonStyle')
         }
-        clearInterval(interval);
-        console.log("Resolved");
-      }, 30);
-      this.getLocation();
-      this.pressButton();
+        clearInterval(interval)
+        console.log('Resolved')
+      }, 30)
+      this.getLocation()
+      this.pressButton()
     },
-    ...mapActions(["pressButton", "error", "noError"])
+    ...mapActions(['pressButton', 'error', 'noError'])
   },
   computed: {
     ...mapGetters([
-      "errorRetrievingGPS",
-      "buttonPressed",
-      "checkGPSService",
-      "styleButton",
-      "promptResolved"
+      'errorRetrievingGPS',
+      'buttonPressed',
+      'checkGPSService',
+      'styleButton',
+      'promptResolved'
     ])
   }
-};
+}
 </script>
 <style>
 </style>
