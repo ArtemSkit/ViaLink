@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["about"],{f820:function(t,n,e){"use strict";e.r(n);var i=function(){var t=this,n=t.$createElement;t._self._c;return t._m(0)},a=[function(){var t=this,n=t.$createElement,e=t._self._c||n;return e("div",{staticClass:"about"},[e("h1",[t._v("ViaLink")]),e("p",[t._v(" Application that will tell a user when a bus is arriving,\n    while using geolocation on their phone to notify transit ")])])}],l=e("2877"),o={},s=Object(l["a"])(o,i,a,!1,null,null,null);n["default"]=s.exports}}]);
+//# sourceMappingURL=about.998461fd.js.map

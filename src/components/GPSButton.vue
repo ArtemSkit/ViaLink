@@ -7,7 +7,7 @@
           :disabled="!checkGPSService"
           @click="changeStyle"
           :style="styleButton"
-        >Show Next Busses</v-btn>
+        >Show Next Buses</v-btn>
       </v-flex>
     </v-layout>
   </v-container>
@@ -40,17 +40,36 @@ export default {
       console.log(
         'Latitude: \t' +
           position.coords.latitude +
+<<<<<<< HEAD
           '\nLongitude: \t' +
           position.coords.longitude +
           '\nIP Address: \t'
       )
+=======
+          "    Longitude: " +
+          position.coords.longitude
+      );
+      var marker = {
+        position: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        }
+      };
+      this.setLocation(marker);
+>>>>>>> 3fb6a41c5a9837316ddb28f62f9f01ea3bd9407f
     },
     changeStyle () {
       var interval = setInterval(() => {
         if (!this.promptResolved) return
         if (this.checkGPSService && !this.errorRetrievingGPS) {
+<<<<<<< HEAD
           this.$store.commit('changeListStyle')
           this.$store.commit('changeButtonStyle')
+=======
+          this.$store.commit("changeListStyle");
+          this.$store.commit("changeButtonStyle");
+          this.$store.commit("changeArrvalListStyle");
+>>>>>>> 3fb6a41c5a9837316ddb28f62f9f01ea3bd9407f
         }
         clearInterval(interval)
         console.log('Resolved')
@@ -58,7 +77,11 @@ export default {
       this.getLocation()
       this.pressButton()
     },
+<<<<<<< HEAD
     ...mapActions(['pressButton', 'error', 'noError'])
+=======
+    ...mapActions(["pressButton", "error", "noError", "setLocation"])
+>>>>>>> 3fb6a41c5a9837316ddb28f62f9f01ea3bd9407f
   },
   computed: {
     ...mapGetters([
