@@ -9,7 +9,7 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 Vue.config.productionTip = false
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyAeb4WmbE6B5_BDsiKb38dZfb8MUDFyYXM'
+    key: 'Your API key'
     // libraries: 'places', // This is required if you use the Autocomplete plugin
     // OR: libraries: 'places,drawing'
     // OR: libraries: 'places,drawing,visualization'
